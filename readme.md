@@ -5,7 +5,7 @@
 
 [mdast][] extensions to parse and serialize [GFM][] (autolink literals,
 footnotes, strikethrough, tables, tasklists).
-This extension is based on the \[mdast-util-gfm]\[] extension.
+This extension is based on the [mdast-util-gfm][mdast-util-gfm] extension.
 But it is matched with [`@jhuix/mdast-util-gfm-table`][mdast-util-gfm-table].
 
 ## Contents
@@ -437,6 +437,8 @@ compatible with Node.js 16.
 [mdast-util-from-markdown]: https://github.com/syntax-tree/mdast-util-from-markdown
 
 [mdast-util-frontmatter]: https://github.com/syntax-tree/mdast-util-frontmatter
+
+[mdast-util-gfm]: https://github.com/syntax-tree/mdast-util-gfm
 
 [mdast-util-gfm-table]: https://github.com/jhuix-js/mdast-util-gfm-table
 
