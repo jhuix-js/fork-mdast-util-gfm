@@ -1,11 +1,11 @@
 import type {ToMarkdownOptions as FootnoteOptions} from 'mdast-util-gfm-footnote'
-import type {Options as TableOptions} from 'mdast-util-gfm-table'
+import type {Options as TableOptions} from '@jhuix/mdast-util-gfm-table'
 
 /**
  * Configuration for `gfmToMarkdown` from `mdast-util-gfm`.
  *
  * Currently supports options for `mdast-util-gfm-footnote` and
- * `mdast-util-gfm-table`.
+ * `@jhuix/mdast-util-gfm-table`.
  */
 export interface Options extends FootnoteOptions, TableOptions {}
 

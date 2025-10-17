@@ -1,15 +1,12 @@
-# mdast-util-gfm
+# [**@jhuix/mdast-util-gfm**](https://github.com/jhuix-js/mdast-util-gfm)
 
-[![Build][build-badge]][build]
-[![Coverage][coverage-badge]][coverage]
 [![Downloads][downloads-badge]][downloads]
 [![Size][size-badge]][size]
-[![Sponsors][sponsors-badge]][collective]
-[![Backers][backers-badge]][collective]
-[![Chat][chat-badge]][chat]
 
 [mdast][] extensions to parse and serialize [GFM][] (autolink literals,
 footnotes, strikethrough, tables, tasklists).
+This extension is based on the \[mdast-util-gfm]\[] extension.
+But it is matched with [`@jhuix/mdast-util-gfm-table`][mdast-util-gfm-table].
 
 ## Contents
 
@@ -27,7 +24,6 @@ footnotes, strikethrough, tables, tasklists).
 * [Types](#types)
 * [Compatibility](#compatibility)
 * [Related](#related)
-* [Contribute](#contribute)
 * [License](#license)
 
 ## What is this?
@@ -46,8 +42,8 @@ GFM in syntax trees to markdown).
 This project is useful when you want to support the same features that GitHub
 does in files in a repo, Gists, and several other places.
 Users frequently believe that some of these extensions, specifically autolink
-literals and tables, are part of normal markdown, so using `mdast-util-gfm` will
-help match your implementation to their understanding of markdown.
+literals and tables, are part of normal markdown, so using `@jhuix/mdast-util-gfm`
+will help match your implementation to their understanding of markdown.
 There are several edge cases where GitHub’s implementation works in unexpected
 ways or even different than described in their spec, so *writing* in GFM is not
 always the best choice.
@@ -56,7 +52,7 @@ You can use these extensions when you are working with
 `mdast-util-from-markdown` and `mdast-util-to-markdown` already.
 
 When working with `mdast-util-from-markdown`, you must combine this package
-with [`micromark-extension-gfm`][extension].
+with [`@jhuix/micromark-extension-gfm`][extension].
 
 Instead of this package, you can also use the extensions separately:
 
@@ -66,7 +62,7 @@ Instead of this package, you can also use the extensions separately:
   — support GFM footnotes
 * [`mdast-util-gfm-strikethrough`](https://github.com/syntax-tree/mdast-util-gfm-strikethrough)
   — support GFM strikethrough
-* [`mdast-util-gfm-table`](https://github.com/syntax-tree/mdast-util-gfm-table)
+* [`@jhuix/mdast-util-gfm-table`][mdast-util-gfm-table]
   — support GFM tables
 * [`mdast-util-gfm-task-list-item`](https://github.com/syntax-tree/mdast-util-gfm-task-list-item)
   — support GFM tasklists
@@ -76,7 +72,7 @@ support for frontmatter.
 GitHub supports YAML frontmatter for files in repos and Gists but they don’t
 treat it as part of GFM.
 
-All these packages are used in [`remark-gfm`][remark-gfm], which
+All these packages are used in [`@jhuix/remark-gfm`][remark-gfm], which
 focusses on making it easier to transform content by abstracting these
 internals away.
 
@@ -96,14 +92,14 @@ npm install mdast-util-gfm
 In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import {gfmFromMarkdown, gfmToMarkdown} from 'https://esm.sh/mdast-util-gfm@3'
+import {gfmFromMarkdown, gfmToMarkdown} from 'https://esm.sh/@jhuix/mdast-util-gfm@3'
 ```
 
 In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import {gfmFromMarkdown, gfmToMarkdown} from 'https://esm.sh/mdast-util-gfm@3?bundle'
+  import {gfmFromMarkdown, gfmToMarkdown} from 'https://esm.sh/@jhuix/mdast-util-gfm@3?bundle'
 </script>
 ```
 
@@ -144,9 +140,9 @@ A note[^1]
 ```js
 import fs from 'node:fs/promises'
 import {fromMarkdown} from 'mdast-util-from-markdown'
-import {gfmFromMarkdown, gfmToMarkdown} from 'mdast-util-gfm'
+import {gfmFromMarkdown, gfmToMarkdown} from '@jhuix/mdast-util-gfm'
 import {toMarkdown} from 'mdast-util-to-markdown'
-import {gfm} from 'micromark-extension-gfm'
+import {gfm} from '@jhuix/micromark-extension-gfm'
 
 const value = await fs.readFile('example.md', 'utf8')
 
@@ -363,7 +359,7 @@ That’s done by [`mdast-util-to-hast`][mdast-util-to-hast].
 
 ## Syntax
 
-See [Syntax in `micromark-extension-gfm`][syntax].
+See [Syntax in `@jhuix/micromark-extension-gfm`][syntax].
 
 ## Syntax tree
 
@@ -376,7 +372,7 @@ See their readmes for the node types supported in the tree:
   — GFM footnotes
 * [`mdast-util-gfm-strikethrough`](https://github.com/syntax-tree/mdast-util-gfm-strikethrough#syntax-tree)
   — GFM strikethrough
-* [`mdast-util-gfm-table`](https://github.com/syntax-tree/mdast-util-gfm-table#syntax-tree)
+* [`@jhuix/mdast-util-gfm-table`](https://github.com/jhuix-js/mdast-util-gfm-table#syntax-tree)
   — GFM tables
 * [`mdast-util-gfm-task-list-item`](https://github.com/syntax-tree/mdast-util-gfm-task-list-item#syntax-tree)
   — GFM tasklists
@@ -401,24 +397,14 @@ compatible with Node.js 16.
 
 ## Related
 
-* [`remark-gfm`][remark-gfm]
+* [`@jhuix/remark-gfm`][remark-gfm]
   — remark plugin to support GFM
-* [`micromark-extension-gfm`][extension]
+* [`@jhuix/micromark-extension-gfm`][extension]
   — micromark extension to parse GFM
-
-## Contribute
-
-See [`contributing.md`][contributing] in [`syntax-tree/.github`][health] for
-ways to get started.
-See [`support.md`][support] for ways to get help.
-
-This project has a [code of conduct][coc].
-By interacting with this repository, organization, or community you agree to
-abide by its terms.
 
 ## License
 
-[MIT][license] © [Titus Wormer][author]
+[MIT][license] © [Jhuix][author] (Hui Jin)
 
 <!-- Definitions -->
 
@@ -430,41 +416,19 @@ abide by its terms.
 
 [author]: https://wooorm.com
 
-[backers-badge]: https://opencollective.com/unified/backers/badge.svg
+[downloads]: https://www.npmjs.com/package/@jhuix/mdast-util-gfm
 
-[build]: https://github.com/syntax-tree/mdast-util-gfm/actions
-
-[build-badge]: https://github.com/syntax-tree/mdast-util-gfm/workflows/main/badge.svg
-
-[chat]: https://github.com/syntax-tree/unist/discussions
-
-[chat-badge]: https://img.shields.io/badge/chat-discussions-success.svg
-
-[coc]: https://github.com/syntax-tree/.github/blob/main/code-of-conduct.md
-
-[collective]: https://opencollective.com/unified
-
-[contributing]: https://github.com/syntax-tree/.github/blob/main/contributing.md
-
-[coverage]: https://codecov.io/github/syntax-tree/mdast-util-gfm
-
-[coverage-badge]: https://img.shields.io/codecov/c/github/syntax-tree/mdast-util-gfm.svg
-
-[downloads]: https://www.npmjs.com/package/mdast-util-gfm
-
-[downloads-badge]: https://img.shields.io/npm/dm/mdast-util-gfm.svg
+[downloads-badge]: https://img.shields.io/npm/dm/@jhuix/mdast-util-gfm.svg
 
 [esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
 
 [esmsh]: https://esm.sh
 
-[extension]: https://github.com/micromark/micromark-extension-gfm
+[extension]: https://github.com/jhuix-js/micromark-extension-gfm
 
 [from-markdown-extension]: https://github.com/syntax-tree/mdast-util-from-markdown#extension
 
 [gfm]: https://github.github.com/gfm/
-
-[health]: https://github.com/syntax-tree/.github
 
 [license]: license
 
@@ -474,23 +438,21 @@ abide by its terms.
 
 [mdast-util-frontmatter]: https://github.com/syntax-tree/mdast-util-frontmatter
 
+[mdast-util-gfm-table]: https://github.com/jhuix-js/mdast-util-gfm-table
+
 [mdast-util-to-hast]: https://github.com/syntax-tree/mdast-util-to-hast
 
 [mdast-util-to-markdown]: https://github.com/syntax-tree/mdast-util-to-markdown
 
 [npm]: https://docs.npmjs.com/cli/install
 
-[remark-gfm]: https://github.com/remarkjs/remark-gfm
+[remark-gfm]: https://github.com/jhuix-js/remark-gfm
 
-[size]: https://bundlejs.com/?q=mdast-util-gfm
+[size]: https://bundlejs.com/?q=@jhuix/mdast-util-gfm
 
-[size-badge]: https://img.shields.io/badge/dynamic/json?label=minzipped%20size&query=$.size.compressedSize&url=https://deno.bundlejs.com/?q=mdast-util-gfm
+[size-badge]: https://img.shields.io/badge/dynamic/json?label=minzipped%20size&query=$.size.compressedSize&url=https://deno.bundlejs.com/?q=@jhuix/mdast-util-gfm
 
-[sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
-
-[support]: https://github.com/syntax-tree/.github/blob/main/support.md
-
-[syntax]: https://github.com/micromark/micromark-extension-gfm#syntax
+[syntax]: https://github.com/jhuix-js/micromark-extension-gfm#syntax
 
 [to-markdown-extension]: https://github.com/syntax-tree/mdast-util-to-markdown#options
 

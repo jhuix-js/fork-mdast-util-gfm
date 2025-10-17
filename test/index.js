@@ -3,19 +3,20 @@ import fs from 'node:fs/promises'
 import test from 'node:test'
 import {slug} from 'github-slugger'
 import {toHtml} from 'hast-util-to-html'
-import {gfm} from 'micromark-extension-gfm'
+import {gfm} from '@jhuix/micromark-extension-gfm'
 import {fromMarkdown} from 'mdast-util-from-markdown'
-import {gfmFromMarkdown, gfmToMarkdown} from 'mdast-util-gfm'
+import {gfmFromMarkdown, gfmToMarkdown} from '@jhuix/mdast-util-gfm'
 import {toHast} from 'mdast-util-to-hast'
 import {toMarkdown} from 'mdast-util-to-markdown'
+import {gfmTableHastHandlers} from '@jhuix/mdast-util-gfm-table'
 import {spec} from './spec.js'
 
 test('core', async function (t) {
   await t.test('should expose the public api', async function () {
-    assert.deepEqual(Object.keys(await import('mdast-util-gfm')).sort(), [
-      'gfmFromMarkdown',
-      'gfmToMarkdown'
-    ])
+    assert.deepEqual(
+      Object.keys(await import('@jhuix/mdast-util-gfm')).sort(),
+      ['gfmFromMarkdown', 'gfmToMarkdown']
+    )
   })
 })
 
@@ -43,7 +44,12 @@ test('markdown -> mdast', async function (t) {
       mdastExtensions: [gfmFromMarkdown()]
     })
 
-    const actualHtml = toHtml(toHast(mdast, {allowDangerousHtml: true}), {
+    const hast = toHast(mdast, {
+      allowDangerousHtml: true,
+      handlers: gfmTableHastHandlers()
+    })
+
+    const actualHtml = toHtml(hast, {
       allowDangerousHtml: true,
       characterReferences: {useNamedReferences: true},
       closeSelfClosing: true
